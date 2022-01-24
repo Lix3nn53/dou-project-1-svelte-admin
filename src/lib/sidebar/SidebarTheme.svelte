@@ -1,14 +1,13 @@
 <script lang="ts">
-  let isDarkMode = true
+	let isDarkMode = true;
 
-  function toggleTheme() {
-		document.documentElement.classList.toggle('dark')
-    isDarkMode = document.documentElement.classList.contains("dark")
+	function toggleTheme() {
+		document.documentElement.classList.toggle('dark');
+		isDarkMode = document.documentElement.classList.contains('dark');
 	}
 
-	import Switch from "../Switch.svelte"
+	import Switch from '../Switch.svelte';
 </script>
-
 
 <Switch id="theme" onSwitch={toggleTheme}>
 	{isDarkMode}

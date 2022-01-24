@@ -5,7 +5,7 @@
 
 <label for={id} class="switch">
 	<input
-		id={id}
+		{id}
 		type="checkbox"
 		on:click={() => {
 			if (!onSwitch) return;
