@@ -1,0 +1,8 @@
+@import './styles/index.css';
+@import '@fontsource/fira-mono';
+
+#svelte {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}

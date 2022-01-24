@@ -1,0 +1,10 @@
+@import-normalize;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	#svelte {
+		@apply bg-primary-200 text-primary-800 dark:bg-primary-800 dark:text-white;
+	}
+}
