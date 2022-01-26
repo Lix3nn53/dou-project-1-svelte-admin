@@ -5,8 +5,8 @@
 </script>
 
 <nav
-	class="fixed top-0 left-0 h-screen w-16 flex flex-col place-items-center
-                  bg-gray-400 dark:bg-gray-900 shadow-lg"
+	class="md:col-span-1 flex flex-col place-items-center
+                  bg-primary-400 dark:bg-primary-900 shadow-lg p-2"
 >
 	<SidebarIcon faClass="fas fa-fire" text="text" to="/" />
 	<SidebarDivider />

@@ -13,7 +13,7 @@
 			onSwitch();
 		}}
 	/>
-	<span class="switch-button" />
+	<span class="switch-button bg-primary-700 checked:bg-red-600" />
 </label>
 
 <style>
@@ -38,7 +38,6 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: var(--color-background);
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
 		border-radius: 34px;
@@ -48,8 +47,6 @@
 	.switch-button:before {
 		position: absolute;
 		content: '';
-		color: var(--color-white);
-		background-color: var(--color-white);
 		font-family: 'Font Awesome 5 Free';
 		font-size: 21px;
 		height: var(--switch-button-radius);
@@ -63,17 +60,11 @@
 		border-radius: 50%;
 	}
 
-	input:checked + .switch-button {
-		background-color: var(--color-primary);
-	}
-
 	input:checked + .switch-button:before {
 		-webkit-transform: translateX(var(--switch-button-radius));
 		-ms-transform: translateX(var(--switch-button-radius));
 		transform: translateX(var(--switch-button-radius));
 	}
-
-	/* Custom Switches */
 
 	.switch-button:before {
 		content: '\f186';
@@ -83,10 +74,11 @@
 	input:checked + .switch-button:before {
 		content: '\f111';
 		background-color: transparent;
-		color: var(--color-black);
 	}
 
 	input:checked + .switch-button {
 		background-color: var(--color-white);
 	}
+
+	/* Custom Switches */
 </style>

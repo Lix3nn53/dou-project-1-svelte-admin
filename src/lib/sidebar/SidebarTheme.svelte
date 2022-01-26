@@ -6,7 +6,7 @@
 		isDarkMode = document.documentElement.classList.contains('dark');
 	}
 
-	import Switch from '../Switch.svelte';
+	import Switch from '../switch/SwitchDoggo.svelte';
 </script>
 
 <Switch id="theme" onSwitch={toggleTheme}>
