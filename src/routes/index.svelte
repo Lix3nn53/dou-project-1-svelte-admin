@@ -3,8 +3,8 @@
 </script>
 
 <script lang="ts">
-	import Card from '$lib/card/Card.svelte';
-	import Counter from '$lib/Counter.svelte';
+	import Card from '$lib/components/card/Card.svelte';
+	import Counter from '$lib/components/Counter.svelte';
 </script>
 
 <svelte:head>

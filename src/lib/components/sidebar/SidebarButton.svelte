@@ -1,11 +1,10 @@
 <script lang="ts">
-	export let faClass: string;
-	export let text: string;
-	export let to: string;
+	export let faClass: string; // font awesome class
+	export let onClick: () => void;
 </script>
 
-<a
-	href={to}
+<button
+	on:click={onClick}
 	class="flex items-center justify-center 
 h-12 w-full mt-2 mb-2 mx-auto  
 bg-primary-200 hover:bg-green-600 dark:bg-primary-800 
@@ -16,6 +15,6 @@ cursor-pointer shadow-lg hover:no-underline"
 >
 	<i class={faClass} />
 	<span class="p-2 m-2 text-primary-900 dark:text-primary-100 text-xs font-semibold">
-		{text}
+		<slot />
 	</span>
-</a>
+</button>

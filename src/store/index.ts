@@ -1,12 +1,17 @@
 import { writable } from 'svelte/store';
 
-function createCount() {
+function createUser() {
 	const { subscribe, set, update } = writable(0);
 
 	return {
 		subscribe,
-		increment: () => {},
-		decrement: () => {},
-		reset: () => {}
+		signout: () => {
+			set(null);
+		},
+		signin: (user) => {
+			set(user);
+		}
 	};
 }
+
+export const user = createUser();

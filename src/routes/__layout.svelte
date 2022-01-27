@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Header from '$lib/header/Header.svelte';
+	import Header from '$lib/components/header/Header.svelte';
 	import '../app.css';
-	import Sidebar from '$lib/sidebar/Sidebar.svelte';
+	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 </script>
 
 <div class="md:h-screen md:grid md:grid-cols-12">
