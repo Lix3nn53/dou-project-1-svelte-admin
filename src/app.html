@@ -5,6 +5,20 @@
 		<meta name="description" content="Svelte demo app" />
 		<link rel="icon" href="%svelte.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- DARK THEME -->
+		<script>
+			// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+			if (
+				localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
+		<!-- IMPORT FONT AWESOME -->
+		<script src="https://kit.fontawesome.com/2f1de5cc1e.js" crossorigin="anonymous"></script>
 		%svelte.head%
 	</head>
 	<body>

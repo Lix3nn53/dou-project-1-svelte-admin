@@ -3,27 +3,12 @@
 </script>
 
 <script lang="ts">
+	import Card from '$lib/card/Card.svelte';
 	import Counter from '$lib/Counter.svelte';
 </script>
 
 <svelte:head>
 	<title>Home</title>
-
-	<!-- DARK THEME -->
-	<script>
-		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-		if (
-			localStorage.theme === 'dark' ||
-			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-		) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	</script>
-
-	<!-- IMPORT FONT AWESOME -->
-	<script src="https://kit.fontawesome.com/2f1de5cc1e.js" crossorigin="anonymous"></script>
 </svelte:head>
 
 <section>
@@ -38,10 +23,13 @@
 		to your new<br />SvelteKit app
 	</h1>
 
-	<h2 class="p-6 m-6 shadow-lg">
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
+	<Card>
+		<span slot="header"> P. Sherman </span>
+		<h2>
+			try editing <strong>src/routes/index.svelte</strong>
+		</h2>
+		<span slot="footer"> P. Sherman </span>
+	</Card>
 	<Counter />
 </section>
 
