@@ -1,0 +1,67 @@
+:root {
+	--color-base-50: 220 220 225;
+	--color-base-100: 209 210 216;
+	--color-base-200: 187 189 197;
+	--color-base-300: 165 169 179;
+	--color-base-400: 143 149 160;
+	--color-base-500: 121 130 141;
+	--color-base-600: 97 106 114;
+	--color-base-700: 74 82 86;
+	--color-base-800: 50 57 59;
+	--color-base-900: 27 31 31;
+
+	--color-primary-50: 204 200 239;
+	--color-primary-100: 190 187 235;
+	--color-primary-200: 163 159 227;
+	--color-primary-300: 135 131 219;
+	--color-primary-400: 107 104 211;
+	--color-primary-500: 78 76 203;
+	--color-primary-600: 53 52 181;
+	--color-primary-700: 42 44 145;
+	--color-primary-800: 32 34 109;
+	--color-primary-900: 21 24 74;
+
+	--color-secondary-50: 222 224 174;
+	--color-secondary-100: 214 219 161;
+	--color-secondary-200: 195 209 135;
+	--color-secondary-300: 173 199 110;
+	--color-secondary-400: 148 189 84;
+	--color-secondary-500: 119 171 66;
+	--color-secondary-600: 94 149 57;
+	--color-secondary-700: 72 127 49;
+	--color-secondary-800: 53 105 40;
+	--color-secondary-900: 37 83 32;
+
+	--color-danger-50: 239 227 215;
+	--color-danger-100: 232 213 198;
+	--color-danger-200: 219 180 166;
+	--color-danger-300: 206 140 133;
+	--color-danger-400: 193 100 107;
+	--color-danger-500: 176 71 96;
+	--color-danger-600: 151 61 97;
+	--color-danger-700: 125 50 93;
+	--color-danger-800: 100 40 84;
+	--color-danger-900: 74 30 70;
+}
+
+/* THEMES */
+
+[data-theme='dark'] {
+	--color-base: #16161a;
+	--color-base: #242629;
+	--color-base-light: #303236;
+	--color-divider: #999999;
+	--color-text: #fffffe;
+	--color-text-dark: #94a1b2;
+	--color-base-rgb: 0, 0, 0;
+}
+
+[data-theme='light'] {
+	--color-base: #d9d9d9;
+	--color-base: #f2f2f2;
+	--color-base-light: #e6e6e6;
+	--color-divider: #bfbfbf;
+	--color-text: #2b2c34;
+	--color-text-dark: #0c0c0e;
+	--color-base-rgb: 242, 242, 242;
+}

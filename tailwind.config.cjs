@@ -1,21 +1,55 @@
 const production = !process.env.ROLLUP_WATCH;
 
+function withOpacityValue(variable) {
+	return ({ opacityValue }) => {
+		if (opacityValue === undefined) {
+			return `rgb(var(${variable}))`;
+		}
+		return `rgb(var(${variable}) / ${opacityValue})`;
+	};
+}
+
 module.exports = {
 	mode: 'jit',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
 			colors: {
+				base: {
+					50: withOpacityValue('--color-base-50'),
+					100: withOpacityValue('--color-base-100'),
+					200: withOpacityValue('--color-base-200'),
+					300: withOpacityValue('--color-base-300'),
+					400: withOpacityValue('--color-base-400'),
+					500: withOpacityValue('--color-base-500'),
+					600: withOpacityValue('--color-base-600'),
+					700: withOpacityValue('--color-base-700'),
+					800: withOpacityValue('--color-base-800'),
+					900: withOpacityValue('--color-base-900')
+				},
 				primary: {
-					900: '#202225',
-					800: '#2f3136',
-					700: '#36393f',
-					600: '#4f545c',
-					500: '#757d8a',
-					400: '#d4d7dc',
-					300: '#e3e5e8',
-					200: '#ebedef',
-					100: '#f2f3f5'
+					50: withOpacityValue('--color-primary-50'),
+					100: withOpacityValue('--color-primary-100'),
+					200: withOpacityValue('--color-primary-200'),
+					300: withOpacityValue('--color-primary-300'),
+					400: withOpacityValue('--color-primary-400'),
+					500: withOpacityValue('--color-primary-500'),
+					600: withOpacityValue('--color-primary-600'),
+					700: withOpacityValue('--color-primary-700'),
+					800: withOpacityValue('--color-primary-800'),
+					900: withOpacityValue('--color-primary-900')
+				},
+				secondary: {
+					50: withOpacityValue('--color-secondary-50'),
+					100: withOpacityValue('--color-secondary-100'),
+					200: withOpacityValue('--color-secondary-200'),
+					300: withOpacityValue('--color-secondary-300'),
+					400: withOpacityValue('--color-secondary-400'),
+					500: withOpacityValue('--color-secondary-500'),
+					600: withOpacityValue('--color-secondary-600'),
+					700: withOpacityValue('--color-secondary-700'),
+					800: withOpacityValue('--color-secondary-800'),
+					900: withOpacityValue('--color-secondary-900')
 				}
 			}
 		}

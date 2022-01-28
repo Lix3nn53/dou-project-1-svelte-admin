@@ -13,7 +13,7 @@
 			onSwitch();
 		}}
 	/>
-	<span class="switch-button bg-primary-700 checked:bg-red-600" />
+	<span class="switch-button bg-base-700 checked:bg-red-600" />
 </label>
 
 <style>
@@ -77,7 +77,11 @@
 	}
 
 	input:checked + .switch-button {
-		background-color: var(--color-white);
+		background-color: rgb(var(--color-base-100));
+	}
+
+	.dark input:checked + .switch-button {
+		background-color: rgb(var(--color-base-200));
 	}
 
 	/* Custom Switches */

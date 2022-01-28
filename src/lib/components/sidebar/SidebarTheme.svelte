@@ -9,6 +9,4 @@
 	import Switch from '../switch/SwitchDoggo.svelte';
 </script>
 
-<Switch id="theme" onSwitch={toggleTheme}>
-	{isDarkMode}
-</Switch>
+<Switch id="theme" onSwitch={toggleTheme} />
