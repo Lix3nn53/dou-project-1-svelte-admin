@@ -16,7 +16,7 @@
 </script>
 
 <nav
-	class="md:col-span-1 flex flex-col place-items-center
+	class="md:col-span-2 2xl:col-span-1 flex flex-col place-items-center
                   bg-base-400 dark:bg-base-900 shadow-lg p-2"
 >
 	{#if user_value}
