@@ -1,18 +1,26 @@
 <script lang="ts">
-	export let id: string;
-	export let onSwitch: () => void;
+	import { onMount } from 'svelte';
+
+	let isDarkMode = true;
+
+	onMount(() => {
+		isDarkMode = document.documentElement.classList.contains('dark');
+	});
+
+	function toggleTheme() {
+		document.documentElement.classList.toggle('dark');
+		isDarkMode = !isDarkMode;
+
+		if (isDarkMode) {
+			localStorage.theme = 'dark';
+		} else {
+			localStorage.theme = 'light';
+		}
+	}
 </script>
 
-<label for={id} class="switch">
-	<input
-		{id}
-		type="checkbox"
-		on:click={() => {
-			if (!onSwitch) return;
-
-			onSwitch();
-		}}
-	/>
+<label for="theme" class="switch">
+	<input id="theme" type="checkbox" on:click={toggleTheme} checked={!isDarkMode} />
 	<span class="switch-button bg-base-900 text-base-50" />
 </label>
 
