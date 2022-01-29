@@ -7,9 +7,14 @@
 </script>
 
 <label for={id} class="m-0">{label}</label>
-<input {id} name={id} {type} class="text-base-900 w-full rounded-md h-8 px-2 text-base my-2" />
+<input
+	{id}
+	name={id}
+	{type}
+	class="text-base-100 dark:text-base-800 w-full rounded-md h-8 px-2 text-base my-2"
+/>
 <ValidationMessage for={id} let:messages={message}>
-	<span>{message || ''}</span>
+	<p>{message || 'a'}</p>
 </ValidationMessage>
 
 <style>

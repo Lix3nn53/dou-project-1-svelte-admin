@@ -5,6 +5,6 @@
 
 @layer components {
 	#svelte {
-		@apply bg-base-100 text-base-900 dark:bg-base-800 dark:text-base-50;
+		@apply bg-base-900 text-base-50;
 	}
 }

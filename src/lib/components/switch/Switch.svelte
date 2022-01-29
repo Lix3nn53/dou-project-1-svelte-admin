@@ -13,7 +13,7 @@
 			onSwitch();
 		}}
 	/>
-	<span class="switch-button bg-base-700 checked:bg-red-600" />
+	<span class="switch-button bg-base-900 text-base-50" />
 </label>
 
 <style>
@@ -41,7 +41,7 @@
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
 		border-radius: 34px;
-		border: 1px solid #3f485f;
+		border: 1px solid rgb(var(--color-base-900));
 	}
 
 	.switch-button:before {
@@ -74,14 +74,6 @@
 	input:checked + .switch-button:before {
 		content: '\f111';
 		background-color: transparent;
-	}
-
-	input:checked + .switch-button {
-		background-color: rgb(var(--color-base-100));
-	}
-
-	.dark input:checked + .switch-button {
-		background-color: rgb(var(--color-base-200));
 	}
 
 	/* Custom Switches */

@@ -1,9 +1,9 @@
-<div class="dark:bg-base-700 bg-base-300 rounded-lg shadow-lg">
-	<div class="dark:bg-base-600 bg-base-400 rounded-t-lg p-2 pl-3">
+<div class="bg-base-200 text-base-700 rounded-md shadow-lg">
+	<div class="bg-base-100 rounded-t-lg p-2 pl-3">
 		<slot name="header" />
 	</div>
 	<div class="p-6 pl-3"><slot /></div>
-	<div class="dark:bg-base-600 bg-base-400 rounded-b-lg p-2 pl-3">
+	<div class="bg-base-100 rounded-b-lg p-2 pl-3">
 		<slot name="footer" />
 	</div>
 </div>

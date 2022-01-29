@@ -1,3 +1,3 @@
-<fieldset class="flex flex-wrap -mx-3 mb-6">
+<fieldset class="flex flex-wrap mx-3 mb-6">
 	<slot />
 </fieldset>

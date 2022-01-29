@@ -5,7 +5,7 @@
 
 <div class="switch dog-rollover">
 	<input class="doggo" {id} type="checkbox" />
-	<label class="toggle-item bg-base-600 dark:bg-base-700" for={id} on:click={onSwitch}>
+	<label class="toggle-item bg-base-800" for={id} on:click={onSwitch}>
 		<div class="dog">
 			<div class="ear" />
 			<div class="ear right" />
