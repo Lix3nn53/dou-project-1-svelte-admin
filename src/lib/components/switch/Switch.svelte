@@ -20,9 +20,10 @@
 	.switch {
 		position: relative;
 		display: inline-block;
-		width: 56px;
+		width: 48px;
 		height: 29px;
 		--switch-button-radius: 23px;
+		--switch-button-move: 16px;
 	}
 
 	.switch input {
@@ -61,9 +62,9 @@
 	}
 
 	input:checked + .switch-button:before {
-		-webkit-transform: translateX(var(--switch-button-radius));
-		-ms-transform: translateX(var(--switch-button-radius));
-		transform: translateX(var(--switch-button-radius));
+		-webkit-transform: translateX(var(--switch-button-move));
+		-ms-transform: translateX(var(--switch-button-move));
+		transform: translateX(var(--switch-button-move));
 	}
 
 	.switch-button:before {

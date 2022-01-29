@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let faClass: string; // font awesome class
 	export let onClick: () => void;
+	export let collapse: boolean;
 </script>
 
 <button
@@ -14,9 +15,13 @@ transition-all duration-200 ease-linear
 cursor-pointer shadow-lg hover:no-underline group"
 >
 	<i class={faClass} />
-	<span
-		class="p-2 m-2 text-base-100 group-hover:text-base-900 dark:group-hover:text-base-100 text-xs font-semibold"
-	>
-		<slot />
-	</span>
+	{#if collapse}
+		<span />
+	{:else}
+		<span
+			class="p-2 m-2 text-base-100 group-hover:text-base-900 dark:group-hover:text-base-100 text-xs font-semibold"
+		>
+			<slot />
+		</span>
+	{/if}
 </button>

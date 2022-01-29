@@ -19,8 +19,8 @@
 	let sidebar: HTMLElement;
 
 	function toggleCollapse() {
-		sidebar.classList.toggle('w-60');
-		sidebar.classList.toggle('w-20');
+		sidebar.classList.toggle('w-64');
+		sidebar.classList.toggle('w-16');
 
 		collapse = !collapse;
 	}
@@ -31,10 +31,10 @@
 	class="flex flex-col
 	bg-primary-500 dark:bg-base-800 
 	shadow-lg p-2
-	w-60"
+	w-64 transition-all duration-200 ease-out"
 >
 	{#if user_value}
-		<SidebarButton faClass="fas fa-fire" onClick={() => {}}>Log out</SidebarButton>
+		<SidebarButton faClass="fas fa-fire" onClick={() => {}} {collapse}>Log out</SidebarButton>
 	{:else}
 		<SidebarLink faClass="fas fa-fire" to="/login" {collapse}>login</SidebarLink>
 	{/if}
@@ -45,10 +45,12 @@
 	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
 	<SidebarDivider />
 	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
-	<div class="mt-auto mb-2 flex items-center flex-row w-full flex-wrap">
-		<SidebarCollapser faClass="fas fa-angle-double-left" onClick={toggleCollapse} />
-		<span class="ml-auto">
+	<div class="mt-auto flex flex-col">
+		<span class="my-2">
 			<SidebarTheme />
+		</span>
+		<span class="">
+			<SidebarCollapser onClick={toggleCollapse} {collapse} />
 		</span>
 	</div>
 </nav>
