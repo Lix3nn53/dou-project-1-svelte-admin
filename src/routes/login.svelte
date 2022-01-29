@@ -36,8 +36,7 @@
 			</h3>
 		</div>
 
-		<div class="bg-base-50 text-base-900">
-			<Wave type="top" />
+		<div class="bg-base-50 text-base-900 test">
 			<form use:form>
 				<legend> Account </legend>
 				<Fieldset>
@@ -52,8 +51,13 @@
 			<pre>
     	{JSON.stringify($data, null, 2)}
  			 </pre>
-
-			<Wave type="bottom" />
 		</div>
 	</div>
 </div>
+
+<style>
+	.test {
+		padding: 50px;
+		border-radius: 10% 90% 10% 90% / 90% 10% 90% 10%;
+	}
+</style>

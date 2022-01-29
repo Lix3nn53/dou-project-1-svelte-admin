@@ -4,14 +4,14 @@
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 </script>
 
-<div class="md:h-screen md:grid md:grid-cols-12">
+<div class="flex flex-row">
 	<Sidebar />
-	<div class="md:col-span-10 2xl:col-span-11 min-h-screen flex flex-col">
+	<div class="min-h-screen w-full flex flex-col">
 		<main>
 			<slot />
 		</main>
 
-		<footer class="mt-auto">
+		<footer class="mt-auto text-center">
 			<p>Welcome to my footer</p>
 		</footer>
 	</div>

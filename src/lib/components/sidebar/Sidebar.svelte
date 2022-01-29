@@ -3,6 +3,7 @@
 	import SidebarButton from './SidebarButton.svelte';
 	import SidebarDivider from './SidebarDivider.svelte';
 	import SidebarTheme from './SidebarTheme.svelte';
+	import SidebarCollapser from './SidebarCollapser.svelte';
 	import { onDestroy } from 'svelte';
 	import { user } from '../../../store';
 
@@ -13,25 +14,41 @@
 	});
 
 	onDestroy(unsubscribe);
+
+	let collapse = false;
+	let sidebar: HTMLElement;
+
+	function toggleCollapse() {
+		sidebar.classList.toggle('w-60');
+		sidebar.classList.toggle('w-20');
+
+		collapse = !collapse;
+	}
 </script>
 
 <nav
-	class="md:col-span-2 2xl:col-span-1 flex flex-col place-items-center
-                  bg-primary-500 dark:bg-base-800 shadow-lg p-2"
+	bind:this={sidebar}
+	class="flex flex-col
+	bg-primary-500 dark:bg-base-800 
+	shadow-lg p-2
+	w-60"
 >
 	{#if user_value}
 		<SidebarButton faClass="fas fa-fire" onClick={() => {}}>Log out</SidebarButton>
 	{:else}
-		<SidebarLink faClass="fas fa-fire" to="/login">login</SidebarLink>
+		<SidebarLink faClass="fas fa-fire" to="/login" {collapse}>login</SidebarLink>
 	{/if}
 	<SidebarDivider />
-	<SidebarLink faClass="fas fa-fire" to="/">home</SidebarLink>
-	<SidebarLink faClass="fas fa-fire" to="/about">about</SidebarLink>
-	<SidebarLink faClass="fas fa-fire" to="/">text</SidebarLink>
-	<SidebarLink faClass="fas fa-fire" to="/">text</SidebarLink>
+	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>home</SidebarLink>
+	<SidebarLink faClass="fas fa-fire" to="/about" {collapse}>about</SidebarLink>
+	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
 	<SidebarDivider />
-	<SidebarLink faClass="fas fa-fire" to="/">text</SidebarLink>
-	<div class="mt-auto mb-2">
-		<SidebarTheme />
+	<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+	<div class="mt-auto mb-2 flex items-center flex-row w-full flex-wrap">
+		<SidebarCollapser faClass="fas fa-angle-double-left" onClick={toggleCollapse} />
+		<span class="ml-auto">
+			<SidebarTheme />
+		</span>
 	</div>
 </nav>
