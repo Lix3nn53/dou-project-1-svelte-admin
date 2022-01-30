@@ -1,18 +1,26 @@
-<script lang="ts">
-	import '../app.css';
-	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
-
+<script context="module" lang="ts">
 	import { user } from "../stores"
-	import { goto } from '$app/navigation';
-	import { onMount, tick } from 'svelte';
 
 	let success = false;
 
-	onMount(async () => {
+	/** @type {import('@sveltejs/kit').Load} */
+	export async function load({ url, params, fetch, session, stuff }) {
 		success = await user.fetchUser();
 
-		if (!success) goto("/login")
-	})
+		if (success || url.pathname === "/login") {
+			return {}
+		} else {
+			return {
+				status: 302,
+				redirect: '/login'
+			};
+		}
+	}
+</script>
+
+<script lang="ts">
+	import '../app.css';
+	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 </script>
 
 <div class="flex md:flex-row flex-col">
