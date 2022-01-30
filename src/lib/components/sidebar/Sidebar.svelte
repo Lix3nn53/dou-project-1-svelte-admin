@@ -29,6 +29,10 @@
 
 		collapse = !collapse;
 	}
+
+	// pass to children instead of defining multiple times in child components
+	const buttonClasses = "flex items-center justify-center h-12 w-full mt-2 mb-2 mx-auto hover:bg-primary-300 dark:hover:bg-base-600 bg-base-900 dark:bg-base-900 text-primary-400 hover:text-base-900 dark:hover:text-base-50 hover:rounded-xl rounded-3xl transition-all duration-200 ease-linear cursor-pointer shadow-lg hover:no-underline group"
+	const buttonSpanClasses = "p-2 m-2 text-base-100 group-hover:text-base-900 dark:group-hover:text-base-100 text-xs font-semibold"
 </script>
 
 <nav
@@ -42,22 +46,22 @@
 		{#if user_value == null}
 			<Loading />
 		{:else if !user_value}
-			<SidebarLink faClass="fas fa-fire" to="/login" {collapse}>login</SidebarLink>
+			<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/login" {collapse}>login</SidebarLink>
 		{:else}
 			<p class="text-center">Welcome {user_value.Name}</p>
-			<SidebarButton faClass="fas fa-fire" onClick={async () => {
+			<SidebarButton classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" onClick={async () => {
 				await AuthAPI.logout();
   
 				window.location.href = '/';
 			  }} {collapse}>Log out</SidebarButton>
 		{/if}
 		<SidebarDivider />
-		<SidebarLink faClass="fas fa-fire" to="/" {collapse}>home</SidebarLink>
-		<SidebarLink faClass="fas fa-fire" to="/about" {collapse}>about</SidebarLink>
-		<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
-		<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>home</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/about" {collapse}>about</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
 		<SidebarDivider />
-		<SidebarLink faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
 	</div>
 	<div class="mt-auto flex flex-col">
 		<span class="my-2">
