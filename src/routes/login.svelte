@@ -27,7 +27,7 @@
     // alert(JSON.stringify(values, null, 2));
     isSubmitting.set(true);
 
-	await delay(5000);
+	await delay(2000);
 
     const remember = JSON.parse(values.remember);
     const res = await AuthAPI.login(values.IDNumber, values.password, remember);
@@ -54,11 +54,12 @@
 		validateSchema: schema
 	});
 
-let isSubmittingValue;
+	// Use Auto-subscription instead
+	// let isSubmittingValue;
 
-isSubmitting.subscribe(value => {
-	isSubmittingValue = value;
-	});
+	// isSubmitting.subscribe(value => {
+	// 	isSubmittingValue = value;
+	// 	});
 </script>
 
 <div class="flex w-full items-center flex-col">
@@ -83,7 +84,7 @@ isSubmitting.subscribe(value => {
 					<Field id="remember" label="Remember Me" type="checkbox" />
 				</Fieldset>
 				<span class="self-end">
-					<Button type="submit" disabled={isSubmittingValue}>Login!</Button>
+					<Button type="submit" disabled={$isSubmitting}>Login!</Button>
 				</span>
 			</form>
 
