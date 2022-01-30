@@ -62,6 +62,10 @@
 	// 	});
 </script>
 
+<svelte:head>
+	<title>Login</title>
+</svelte:head>
+
 <div class="flex w-full items-center flex-col">
 	<div class="max-w-screen-md">
 		<div class="text-center mb-16">

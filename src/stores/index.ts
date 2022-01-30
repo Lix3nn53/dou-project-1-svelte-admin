@@ -3,22 +3,22 @@ import UsersAPI from '$lib/api/UsersAPI';
 import errors from '$lib/api/errors';
 
 function createUser() {
-	const { subscribe, set, update } = writable(null);
+	const { subscribe, set } = writable(null);
 
 	return {
 		subscribe,
-		fetchUser: async () => {
+		fetchUser: async (): Promise<boolean> => {
 			try {
 				const response = await UsersAPI.userInfo();
 			
 				if (errors.isError(response)) {
 					set(false)
-					return;
+					return false;
 				}
 				let value = response.data;
 			
 				set(value)
-				return;
+				return true;
 			} catch (error: any) {
 				if (error.response) {
 					console.log(error.response);
@@ -26,6 +26,7 @@ function createUser() {
 			}
 		
 			set(false)
+			return false;
 		}
 	};
 }

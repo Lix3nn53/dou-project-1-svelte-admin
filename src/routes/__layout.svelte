@@ -3,12 +3,22 @@
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 
 	import { user } from "../stores"
+	import { goto } from '$app/navigation';
+	import { onMount, tick } from 'svelte';
 
-	user.fetchUser();
+	let success = false;
+
+	onMount(async () => {
+		success = await user.fetchUser();
+
+		if (!success) goto("/login")
+	})
 </script>
 
 <div class="flex md:flex-row flex-col">
-	<Sidebar />
+	{#if success}
+		<Sidebar />
+	{/if}
 	<div class="min-h-screen w-full flex flex-col">
 		<main>
 			<slot />
