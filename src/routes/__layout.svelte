@@ -4,7 +4,7 @@
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 </script>
 
-<div class="flex flex-row">
+<div class="flex md:flex-row flex-col">
 	<Sidebar />
 	<div class="min-h-screen w-full flex flex-col">
 		<main>

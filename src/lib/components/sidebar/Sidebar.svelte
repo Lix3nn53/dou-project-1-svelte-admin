@@ -19,8 +19,8 @@
 	let sidebar: HTMLElement;
 
 	function toggleCollapse() {
-		sidebar.classList.toggle('w-64');
-		sidebar.classList.toggle('w-16');
+		sidebar.classList.toggle('md:w-64');
+		sidebar.classList.toggle('md:w-16');
 
 		collapse = !collapse;
 	}
@@ -31,7 +31,7 @@
 	class="flex flex-col
 	bg-primary-500 dark:bg-base-800 
 	shadow-lg p-2
-	w-64 transition-all duration-200 ease-out"
+	w-full md:w-64 transition-all duration-200 ease-out"
 >
 	{#if user_value}
 		<SidebarButton faClass="fas fa-fire" onClick={() => {}} {collapse}>Log out</SidebarButton>
