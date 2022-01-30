@@ -9,16 +9,14 @@
 	import Wave from '$lib/components/divider/DividerWave.svelte';
 
 	const schema = yup.object({
-		email: yup.string().email().required(),
-		password: yup.string().min(5).required()
+		IDNumber: yup.string().length(11).required('Required'),
+		password: yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required('Required'),
 	});
-
-	let submitted;
 
 	// Creating the form
 	const { form, data } = createForm<yup.InferType<typeof schema>>({
 		initialValues: {
-			email: '',
+			IDNumber: '',
 			password: ''
 		},
 		onSubmit: (values) => alert(values),
@@ -36,16 +34,21 @@
 			</h3>
 		</div>
 
-		<div class="bg-base-50 text-base-900 test">
-			<form use:form>
-				<legend> Account </legend>
+		<div class="bg-base-100 dark:bg-base-50 text-base-900 test">
+			<form use:form class="flex flex-col">
+				<legend class="font-bold w-full text-center mb-8">Login</legend>
 				<Fieldset>
-					<Field id="email" label="Email" type="email" />
+					<Field id="IDNumber" label="IDNumber" type="text" />
 				</Fieldset>
 				<Fieldset>
 					<Field id="password" label="Password" type="password" />
 				</Fieldset>
-				<Button type="submit">Create Account</Button>
+				<Fieldset>
+					<Field id="remember" label="Remember Me" type="checkbox" />
+				</Fieldset>
+				<span class="self-end">
+					<Button type="submit">Login!</Button>
+				</span>
 			</form>
 
 			<pre>

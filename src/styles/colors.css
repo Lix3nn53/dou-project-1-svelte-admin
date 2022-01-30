@@ -66,7 +66,7 @@
 	--color-danger-900: 74 30 70;
 
 	/* REVERSE OF DARK THEME */
-	--color-base-50: 17 17 19;
+	--color-base-50: 24 24 27;
 	--color-base-100: 34 34 38;
 	--color-base-200: 51 51 57;
 	--color-base-300: 68 68 75;
@@ -91,7 +91,7 @@
 	--color-base-600: #44444b;
 	--color-base-700: #333339;
 	--color-base-800: #222226;
-	--color-base-900: #111113;
+	--color-base-900: #18181b;
 
 	--color-base-50: 250 250 250;
 	--color-base-100: 231 231 233;
@@ -102,5 +102,5 @@
 	--color-base-600: 68 68 75;
 	--color-base-700: 51 51 57;
 	--color-base-800: 34 34 38;
-	--color-base-900: 17 17 19;
+	--color-base-900: 24 24 27;
 }
