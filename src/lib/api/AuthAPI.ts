@@ -20,9 +20,9 @@ const logout = async () => {
 };
 
 const handleAuthResponse = (res: any, save: boolean) => {
-	if (res.data.refresh_token && res.data.access_token) {
-		TokenService.setLocalAccessToken(res.data.access_token, save);
-		TokenService.setLocalRefreshToken(res.data.refresh_token, save);
+	if (res.refresh_token && res.access_token) {
+		TokenService.setLocalAccessToken(res.access_token, save);
+		TokenService.setLocalRefreshToken(res.refresh_token, save);
 
 		return { error: false };
 	}
@@ -32,7 +32,6 @@ const handleAuthResponse = (res: any, save: boolean) => {
 const login = async (IDNumber: string, password: string, save: boolean) => {
 	try {
 		const res = await api.post(`/auth/login`, { IDNumber, password });
-		console.log(res.data);
 
 		return handleAuthResponse(res, save);
 	} catch (error) {
@@ -63,7 +62,7 @@ const register = async (
 			genderIdentity,
 			birthDate
 		});
-		console.log(res.data);
+		console.log(res);
 
 		return { error: false };
 	} catch (error) {

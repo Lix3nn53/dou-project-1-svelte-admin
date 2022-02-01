@@ -8,25 +8,17 @@ function createUser() {
 	return {
 		subscribe,
 		fetchUser: async (): Promise<boolean> => {
-			try {
-				const response = await UsersAPI.userInfo();
-			
-				if (errors.isError(response)) {
-					set(false)
-					return false;
-				}
-				let value = response.data;
-			
-				set(value)
-				return true;
-			} catch (error: any) {
-				if (error.response) {
-					console.log(error.response);
-				}
+			const response = await UsersAPI.userInfo();
+    
+			alert(JSON.stringify(response, null, 2))
+		
+			if (errors.isError(response)) {
+				set(false)
+				return false;
 			}
 		
-			set(false)
-			return false;
+			set(response)
+			return true;
 		}
 	};
 }

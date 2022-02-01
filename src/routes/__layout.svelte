@@ -1,10 +1,16 @@
 <script context="module" lang="ts">
+	import { browser } from '$app/env';
 	import { user } from "../stores"
 
 	let success = false;
+	let count = 1;
 
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({ url, params, fetch, session, stuff }) {
+		if (!browser) return {}; // do not run on the server, only browser. Throws error on server 'window not defined'
+
+		alert(count);
+		count++;
 		success = await user.fetchUser();
 
 		if (success || url.pathname === "/login") {

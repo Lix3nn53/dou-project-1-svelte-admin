@@ -33,7 +33,7 @@
     const res = await AuthAPI.login(values.IDNumber, values.password, remember);
 
     if (res.error) {
-      alert(`error: ${res.error}`);
+      alert(`Login error: ${res.error}`);
       isSubmitting.set(false);
       return false;
     }
