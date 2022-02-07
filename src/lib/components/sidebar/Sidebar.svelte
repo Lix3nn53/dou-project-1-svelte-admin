@@ -58,10 +58,10 @@
 		<SidebarDivider />
 		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>home</SidebarLink>
 		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/about" {collapse}>about</SidebarLink>
-		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
-		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/surveyConfirm" {collapse}>surveyConfirm</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/asdfgh" {collapse}>asdfgh</SidebarLink>
 		<SidebarDivider />
-		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/" {collapse}>text</SidebarLink>
+		<SidebarLink classes={buttonClasses} spanClasses={buttonSpanClasses} faClass="fas fa-fire" to="/text" {collapse}>text</SidebarLink>
 	</div>
 	<div class="mt-auto flex flex-col">
 		<span class="my-2">

@@ -9,8 +9,6 @@ function createUser() {
 		subscribe,
 		fetchUser: async (): Promise<boolean> => {
 			const response = await UsersAPI.userInfo();
-    
-			alert(JSON.stringify(response, null, 2))
 		
 			if (errors.isError(response)) {
 				set(false)

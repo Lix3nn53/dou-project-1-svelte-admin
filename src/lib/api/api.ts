@@ -1,32 +1,8 @@
-import axios from 'axios';
 import TokenService from './TokenService';
 import errors from "./errors"
 
 module api {
   const base = 'http://localhost:8080/v1';
-
-  async function refreshAccessToken() {
-    const token = TokenService.getLocalRefreshToken();
-
-    if (!token) {
-      return Promise.reject(new Error('no local refresh token'));
-    }
-
-    try {
-      const rs = await axios.get(`${base}/auth/refresh_token`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const save = TokenService.isSaved();
-      TokenService.setLocalAccessToken(rs.data.access_token, save);
-
-      return true;
-    } catch (_error) {
-      return Promise.reject(_error);
-    }
-  }
 
   async function send({ method, path, data }) {
     const opts: RequestInit = { method, headers: {} };
@@ -57,6 +33,37 @@ module api {
     }
   }
 
+  async function parseResponseBody(response: Response) {
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1) {
+      return await response.json();
+    } else {
+      return await response.text();
+    }
+  }
+
+  async function refreshAccessToken() {
+    const token = TokenService.getLocalRefreshToken();
+
+    if (!token) {
+      return Promise.reject(new Error('no local refresh token'));
+    }
+
+    try {
+      const opts: RequestInit = { method: "GET", headers: { Authorization: `Bearer ${token}` } };
+      const response = await fetch(`${base}/auth/refresh_token`, opts)
+
+      const parsed = await parseResponseBody(response)
+
+      const save = TokenService.isSaved();
+      TokenService.setLocalAccessToken(parsed.access_token, save);
+
+      return true;
+    } catch (_error) {
+      return Promise.reject(_error);
+    }
+  }
+
   async function sendWithRefresh({ method, path, data }) {
     let response = await send({ method, path, data });
 
@@ -69,15 +76,6 @@ module api {
     }
 
     return response;
-  }
-
-  async function parseResponseBody(response: Response) {
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") !== -1) {
-      return await response.json();
-    } else {
-      return await response.text();
-    }
   }
 
   async function sendWithRefreshAndParse({ method, path, data }) {
