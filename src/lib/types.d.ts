@@ -1,3 +1,5 @@
+import type { string } from "yup";
+
 /**
  * Can be made globally available by placing this
  * inside `global.d.ts` and removing `export` keyword
@@ -30,4 +32,5 @@ export interface Survey {
 	Description: string;
 	DateStart: moment.Moment;
 	DateEnd: moment.Moment;
+	ConfirmStatus: string;
 }

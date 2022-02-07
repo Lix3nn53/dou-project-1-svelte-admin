@@ -1,8 +1,23 @@
+<script context="module" lang="ts">
+</script>
+
 <script lang="ts">
 	import type { Survey } from "$lib/types";
+	import AdminSurveyAPI from "$lib/api/AdminSurveyAPI";
+
 	import Question from "./Question.svelte";
+	import Button from "../button/Button.svelte";
 
 	export let survey: Survey;
+	let confirmStatus: String;
+
+	export async function loadConfirmStatus() {
+		confirmStatus = await AdminSurveyAPI.getConfirmed(survey.ID)
+
+		return {};
+	}
+
+	loadConfirmStatus();
 </script>
 
 {#if survey}
@@ -18,6 +33,15 @@
 				<Question question={question}/>
 			{/each}
 		{/if}
+		<p>Current Status: {confirmStatus}</p>
+		<Button type="button" on:click={async () => {
+			AdminSurveyAPI.confirm(survey.ID, "declined")
+			loadConfirmStatus()
+		}} disabled={false} >Decline</Button>
+		<Button type="button" on:click={async () => {
+			AdminSurveyAPI.confirm(survey.ID, "confirmed")
+			loadConfirmStatus()
+		}} disabled={false} >Confirm</Button>
 		<div class="bg-base-200 dark:bg-base-100 rounded-b-lg p-2 pl-3">
 			{survey.DateStart}~{survey.DateEnd}
 		</div>
