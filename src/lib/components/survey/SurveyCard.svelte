@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Survey } from "$lib/types";
+	import Question from "./Question.svelte";
 
 	export let survey: Survey;
 </script>
@@ -12,6 +13,11 @@
 		</a>
 		</div>
 		<div class="p-6 pl-3">{survey.Description}</div>
+		{#if survey.Questions}
+			{#each survey.Questions as question}
+				<Question question={question}/>
+			{/each}
+		{/if}
 		<div class="bg-base-200 dark:bg-base-100 rounded-b-lg p-2 pl-3">
 			{survey.DateStart}~{survey.DateEnd}
 		</div>
