@@ -77,7 +77,7 @@
 					page++;
 					onPageChange();
 				}}
-				disabled={false}
+				disabled={page === lastPage}
 			>
 				Next
 			</Button>
@@ -93,6 +93,39 @@
 	{:else}
 		<p>Loading</p>
 	{/if}
+
+	<div class="flex flex-row content-center pt-6">
+		<div class="flex-1">
+			<Button
+				type="button"
+				on:click={async () => {
+					page--;
+					onPageChange();
+				}}
+				disabled={page === 1}
+			>
+				Prev
+			</Button>
+		</div>
+		<div class="flex-1">
+			<p class="h-full px-12">Page: {page}</p>
+		</div>
+		<div class="flex-1">
+			<p class="h-full px-12">LastPage: {lastPage}</p>
+		</div>
+		<div class="flex-1 text-right">
+			<Button
+				type="button"
+				on:click={async () => {
+					page++;
+					onPageChange();
+				}}
+				disabled={page === lastPage}
+			>
+				Next
+			</Button>
+		</div>
+	</div>
 </div>
 
 <style>
