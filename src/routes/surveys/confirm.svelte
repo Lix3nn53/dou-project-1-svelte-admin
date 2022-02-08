@@ -1,13 +1,47 @@
-<script lang="ts" >
+<script lang="ts">
 	// Components
-	import Button from "$lib/components/button/Button.svelte";
-	import Card from "$lib/components/card/Card.svelte";
-	import SurveyCard from "$lib/components/survey/SurveyCard.svelte";
+	import Button from '$lib/components/button/Button.svelte';
+	import Card from '$lib/components/card/Card.svelte';
+	import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
+
+	// types
+	import type { Survey } from '$lib/types';
 
 	// api
-	import AdminSurveysAPI from "$lib/api/AdminSurveysAPI";
+	import AdminSurveysAPI from '$lib/api/AdminSurveysAPI';
+	import errors from '$lib/api/errors';
 
-	let surveys;
+	const itemPerPage = 5;
+	let surveys: Survey[];
+	let page: number = 1;
+	let lastPage = 0;
+
+	const getLastPage = (count: number): number => {
+		if (count === 0) return 0;
+
+		let decimal = count / itemPerPage;
+
+		lastPage = Math.ceil(decimal);
+	};
+
+	const getCount = async () => {
+		const count = await AdminSurveysAPI.countWaitingConfirmation();
+
+		if (errors.isError(count)) {
+			return;
+		}
+
+		if (count > 0) {
+			onPageChange();
+			getLastPage(count);
+		}
+	};
+
+	getCount();
+
+	const onPageChange = async () => {
+		surveys = await AdminSurveysAPI.listWaitingConfirmation(itemPerPage, (page - 1) * itemPerPage);
+	};
 </script>
 
 <svelte:head>
@@ -15,25 +49,50 @@
 </svelte:head>
 
 <div class="content">
-	<h1>Survey Confirm</h1>
+	<h1 class="text-center">List of Surveys Waiting for Confirmation</h1>
 
-	<Button type="button" on:click={async () => {
-		surveys = await AdminSurveysAPI.listWaitingConfirmation(5, 0);
-	}} disabled={false} >PULL</Button>
+	<div class="flex flex-row content-center pt-6">
+		<div class="flex-1">
+			<Button
+				type="button"
+				on:click={async () => {
+					page--;
+					onPageChange();
+				}}
+				disabled={page === 1}
+			>
+				Prev
+			</Button>
+		</div>
+		<div class="flex-1">
+			<p class="h-full px-12">Page: {page}</p>
+		</div>
+		<div class="flex-1">
+			<p class="h-full px-12">LastPage: {lastPage}</p>
+		</div>
+		<div class="flex-1 text-right">
+			<Button
+				type="button"
+				on:click={async () => {
+					page++;
+					onPageChange();
+				}}
+				disabled={false}
+			>
+				Next
+			</Button>
+		</div>
+	</div>
 
 	{#if surveys}
 		{#each surveys as survey}
-			<SurveyCard survey={survey} />
+			<div class="py-6">
+				<SurveyCard {survey} />
+			</div>
 		{/each}
+	{:else}
+		<p>Loading</p>
 	{/if}
-	
-	<Card>
-		<span slot="header"> P. Sherman </span>
-		<p>
-			{JSON.stringify(surveys, null, 2)}
-		</p>
-		<span slot="footer"> P. Sherman </span>
-	</Card>
 </div>
 
 <style>

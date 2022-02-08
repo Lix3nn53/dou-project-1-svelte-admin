@@ -1,18 +1,21 @@
 <script lang="ts">
-	import type { Question } from "$lib/types";
-	import Choice from "./Choice.svelte";
+	import type { Question } from '$lib/types';
+	import Choice from './Choice.svelte';
 
 	export let question: Question;
 </script>
 
 {#if question}
 	<div>
-		<p>{question.Value}</p>
-		
-		{#each question.Choices as choice}
-			<Choice choice={choice}/>
+		<p class="font-bold">{question.Value}</p>
+
+		{#each question.Choices as choice, i}
+			<div>
+				{i + 1}:
+				<Choice {choice} />
+			</div>
 		{/each}
 	</div>
 {:else}
-<p>Loading</p>
+	<p>Loading</p>
 {/if}

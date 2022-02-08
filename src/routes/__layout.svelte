@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { browser } from '$app/env';
-	import { user } from "../stores"
+	import { user } from '../stores';
 
 	let success = false;
 	let fetched = false;
@@ -12,8 +12,9 @@
 
 		success = await user.fetchUser();
 		fetched = true;
-		if (success || url.pathname === "/login") {
-			return {}
+
+		if (success || url.pathname === '/login') {
+			return {};
 		} else {
 			return {
 				status: 302,
@@ -46,7 +47,6 @@
 		}
 	});
 </script> -->
-
 <script lang="ts">
 	import '../app.css';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';

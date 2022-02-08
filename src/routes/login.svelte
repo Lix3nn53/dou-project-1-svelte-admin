@@ -15,33 +15,33 @@
 
 	const schema = yup.object({
 		IDNumber: yup.string().length(11).required('Required'),
-		password: yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required('Required'),
+		password: yup.string().min(2, 'Too Short!').max(30, 'Too Long!').required('Required')
 	});
 
-	const delay = ms => new Promise(res => setTimeout(res, ms));
+	const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 	async function handleSubmit(
-    values: Record<string, string>,
-    isSubmitting: Writable<boolean>,
-  ): Promise<boolean> {
-    // alert(JSON.stringify(values, null, 2));
-    isSubmitting.set(true);
+		values: Record<string, string>,
+		isSubmitting: Writable<boolean>
+	): Promise<boolean> {
+		// alert(JSON.stringify(values, null, 2));
+		isSubmitting.set(true);
 
-	await delay(2000);
+		await delay(2000);
 
-    const remember = JSON.parse(values.remember);
-    const res = await AuthAPI.login(values.IDNumber, values.password, remember);
+		const remember = JSON.parse(values.remember);
+		const res = await AuthAPI.login(values.IDNumber, values.password, remember);
 
-    if (res.error) {
-      alert(`Login error: ${res.error}`);
-      isSubmitting.set(false);
-      return false;
-    }
+		if (res.error) {
+			alert(`Login error: ${res.error}`);
+			isSubmitting.set(false);
+			return false;
+		}
 
-    isSubmitting.set(false);
-    window.location.href = '/';
-    return true;
-  }
+		isSubmitting.set(false);
+		window.location.href = '/';
+		return true;
+	}
 
 	// Creating the form
 	const { form, data, isSubmitting } = createForm<yup.InferType<typeof schema>>({

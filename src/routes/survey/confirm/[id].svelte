@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import SurveysAPI from "$lib/api/SurveysAPI";
+	import SurveysAPI from '$lib/api/SurveysAPI';
 
 	let survey;
 
@@ -8,20 +8,21 @@
 		// `params.id` comes from [id].js
 		const surveyId = params.id;
 
-		survey = await SurveysAPI.info(surveyId)
+		survey = await SurveysAPI.info(surveyId);
 
 		return {};
 	}
 </script>
 
-<script lang="ts" >
+<script lang="ts">
 	// Components
-	import Button from "$lib/components/button/Button.svelte";
-	import Card from "$lib/components/card/Card.svelte";
-	import SurveyCard from "$lib/components/survey/SurveyCard.svelte";
+	import Button from '$lib/components/button/Button.svelte';
+	import Card from '$lib/components/card/Card.svelte';
+	import SurveyCard from '$lib/components/survey/SurveyCard.svelte';
 
 	// api
-	import AdminSurveysAPI from "$lib/api/AdminSurveysAPI";
+	import AdminSurveysAPI from '$lib/api/AdminSurveysAPI';
+	import Loading from '$lib/components/Loading.svelte';
 
 	let surveys;
 </script>
@@ -31,9 +32,13 @@
 </svelte:head>
 
 <div class="content">
-	<h1>Survey Confirm</h1>
+	<h1>Survey Confirmation</h1>
 
-	<SurveyCard survey={survey}/>
+	{#if survey}
+		<SurveyCard {survey} />
+	{:else}
+		<p>Loading...</p>
+	{/if}
 </div>
 
 <style>
