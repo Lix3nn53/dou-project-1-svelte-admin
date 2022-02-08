@@ -62,8 +62,7 @@
 		</main>
 
 		<footer class="mt-auto text-center">
-			<p>Welcome to my footer</p>
-			{JSON.stringify($user, null, 2)}
+			<p>Gotham Surveys Administration</p>
 		</footer>
 	</div>
 </div>

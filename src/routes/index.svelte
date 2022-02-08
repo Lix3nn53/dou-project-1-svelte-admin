@@ -19,18 +19,13 @@
 				<img src="svelte-welcome.png" alt="Welcome" />
 			</picture>
 		</div>
-
-		to your new<br />SvelteKit app
 	</h1>
 
-	<Card>
-		<span slot="header"> P. Sherman </span>
+	<div>
 		<h2>
-			try editing <strong>src/routes/index.svelte</strong>
+			Welcome to Gotham Surveys Administration
 		</h2>
-		<span slot="footer"> P. Sherman </span>
-	</Card>
-	<Counter />
+	</div>
 </section>
 
 <style>
